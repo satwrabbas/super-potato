@@ -1,4 +1,3 @@
-/* حافظ على هذا الكود كما هو */
 * {    
     font-family: "Poppins", sans-serif;
     font-weight: 700;
@@ -11,63 +10,74 @@
 
 body {
     background-color: #222832;
+    overflow-x: hidden; 
 }
+
 
 header {
-    /* لا نحتاج لـ Flexbox هنا لأن nav هو الطفل الوحيد المباشر */
-    margin: 2rem auto;
+    margin: 1rem auto;
     max-width: 1200px;
     width: 100%; 
+    position: relative;
+    z-index: 1000;
 }
 
-/* هذا هو الكود الجديد/المعدل لتنسيق الـ navigation */
 .navigation {
-    display: flex; /* اجعل الـ nav هو Flex container */
-    justify-content: space-between; /* هذا يدفع اللوجو لليسار والقائمة لليمين */
-    align-items: center; /* لمحاذاة العناصر عمودياً في المنتصف */
-    padding: 0 2rem;     /* مسافة داخلية من اليمين واليسار */
-    max-width: 1200px;   /* يجب أن تكون نفس عرض الـ header ليتوسط */
-    margin: 0 auto;      /* لتوسيط الـ nav داخل الـ header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    width: 100%;
 }
 
-/* ستايل اللوجو */
-.logo-link { /* إذا استخدمت logo-link class */
-    /* قد تحتاج لتحديد بعض الخصائص إذا كان هناك أي سلوك غير مرغوب فيه */
-    display: flex; /* لجعل img تتصرف بشكل جيد داخل الرابط */
-    align-items: center;
-}
 .logo {
-    height: 50px;       /* حجم اللوجو */
+    height: 50px;
     width: auto;
     cursor: pointer;
-    /* margin-right: auto; <-- لم تعد بحاجة إليه هنا */
-    /* display: block; <-- لم تعد بحاجة إليه هنا */
+    display: block;
 }
 
-/* ستايل الـ ul والروابط */
-.navigation ul {
-    display: flex; /* اجعل الـ ul أيضاً Flex container لروابطه */
+
+.nav-menu {
+    display: flex;
     list-style-type: none;
     gap: 2rem;
     align-items: center;
-    padding: 0; /* أزل الـ padding من هنا، أصبح على .navigation */
-    margin: 0;  /* أزل الـ margin الافتراضي للـ ul */
 }
 
-.navigation a {
+.nav-menu a {
     text-decoration: none;
     color: #eee;
     transition: 0.3s;
+    font-size: 1rem;
 }
 
-.navigation a:hover {
+.nav-menu a:hover {
     color: #00abd5;
 }
 
-/* باقي أكوادك كما هي */
-hr{
-    opacity: 10%;
+
+.hamburger {
+    display: none;
+    cursor: pointer;
 }
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: #eee;
+    border-radius: 2px;
+}
+
+hr {
+    opacity: 0.1;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
 
 .hero {
     display: flex;
@@ -75,34 +85,31 @@ hr{
     align-items: center;
     margin: 5rem auto;
     max-width: 1200px;
+    padding: 0 2rem;
 }
 .arrow {
     position: absolute;
     transform: translateX(-5.5rem) translate(1.5rem);
 }
-
 .heroSub {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
-
 .name {
     font-size: 3rem;
     color: #eeeeee;
 }
-
 .title {
     font-size: 4rem;
     color: #00abd5;
 }
-
 .heroBtns {
     display: flex;
     gap: 1rem;
     margin-top: 1.5rem;
 }
-.hireMe{
+.hireMe {
     background-color: #00abd5;
     color: #eee;
     border-radius: 24px;
@@ -110,7 +117,7 @@ hr{
     padding: 0.5rem 1.5rem;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
-.cv{
+.cv {
     background-color: rgba(57, 62, 70, 0.75);
     color: #eeeeee;
     border-radius: 24px;
@@ -121,8 +128,8 @@ hr{
     align-items: center;
     gap: 0.5rem;
     backdrop-filter: blur(4px);
-
 }
+
 
 .aboutMe {
     display: flex;
@@ -130,7 +137,8 @@ hr{
     align-items: center;
     margin: 5rem auto;
     max-width: 1200px;
-    gap: 10rem;   
+    padding: 0 2rem;
+    gap: 5rem;   
 }
 .textContainer {
     display: flex;
@@ -142,182 +150,257 @@ hr{
     gap: 1rem;
     font-size: 2rem;
 }
-.aboutName {
-    color: #eee;
-}
-.aboutTitle {
-    color: #00abd5;
-}
+.aboutName { color: #eee; }
+.aboutTitle { color: #00abd5; }
 .aboutMePar {
     text-align: justify;
     color: rgba(238, 238, 238, 0.75);
-}
-.works {
-    background-image: url("assets/svg/background.svg");
-    padding: 10rem 10rem;
-    margin: 5rem 0rem;
-}
-.worksContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: left;
-    margin: 5rem auto;
-    max-width: 1200px;
+    line-height: 1.6;
 }
 
+
+.works {
+    background-image: url("assets/svg/background.svg");
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 2rem;
+    margin: 5rem 0;
+}
+.worksContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 .projectTitle {
     display: flex;
     align-items: center;
-    justify-content: left;
     gap: 5px;
     font-size: 2rem;
+    margin-bottom: 3rem;
 }
-/* هنا أيضا الـ ul يجب أن يكون flex لأجل الـ li */
 .works ul {
     display: flex;
     list-style-type: none;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap; 
+    gap: 2rem;
+    padding: 0;
 }
 .works li {
     border-radius: 16px;
     background-color: rgba(57, 62, 70, 0.5);
     backdrop-filter: blur(4px);
-    padding: 1rem 4rem;
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .works li img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
     object-fit: contain;
     transition: transform 0.2s;
 }
-.works li :hover {
-    transform: scale(1.5);
+.works li:hover img {
+    transform: scale(1.1); 
 }
+
+
 .contactContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     gap: 2rem;
-    margin: 2rem auto;
+    margin: 5rem auto;
     max-width: 1200px;
-  }
-  .contactTitle {
+    padding: 0 2rem;
+}
+.contactTitle {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 5px;
-    margin-bottom: 10px;
     font-size: 2rem;
-  }
-  .contact {
+}
+.contact {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 5rem;
-    gap: 20rem;
-  }
-  .contact h3,
-  .contact a {
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+.contact h3, .contact a {
     color: #eeeeee;
     text-decoration: none;
-  }
-  .emailAndPhone {
+    font-size: 1rem;
+}
+.emailAndPhone {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
-  }
-  
-  .socialMedia {
+    gap: 10px;
+}
+.socialMedia {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-  }
-  .socialMedia a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+.socialMedia a {
+    border-radius: 50%;
     background-color: rgba(57, 62, 70, 0.5);
     backdrop-filter: blur(4px);
     padding: 1rem;
-  }
-  .socialMedia img {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+.socialMedia img {
     width: 24px;
     height: 24px;
-  }
-  
-  footer {
+}
+footer {
     color: #eeeeee;
     padding: 2rem;
     text-align: center;
-  }
-  
-  @media (max-width: 1023px) {
+    font-size: 0.9rem;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    
+    .hamburger {
+        display: block;
+        z-index: 1001; 
+    }
+    
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%; 
+        top: 0;
+        flex-direction: column;
+        background-color: #222832; 
+        width: 100%; 
+        height: 15rem; 
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s ease-in-out;
+        z-index: 1000;
+        box-shadow: none;
+    }
+
+    .nav-menu.active {
+        left: 0; 
+    }
+
+    .nav-menu li {
+        margin: 1.5rem 0;
+    }
+    
+    .nav-menu a {
+        font-size: 1.5rem; 
+    }
+
+    
+    
     header {
-      margin-left: 1rem;
-      margin-right: 1rem;
+        margin: 1rem 0; 
     }
+
     .hero {
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
+        flex-direction: column;
+        margin: 2rem auto; 
+        text-align: center;
+        gap: 2rem;
     }
-    .heroImg {
-      width: 400px;
+
+    
+    .name { font-size: 2rem; } 
+    .title { font-size: 2.2rem; } 
+    
+    .arrow { display: none; } 
+
+    .heroBtns {
+        justify-content: center;
+        flex-wrap: wrap; 
     }
-    .name,
-    .title {
-      font-size: 2rem;
-    }
-    .arrow {
-      display: none;
-    }
+
     .aboutMe {
-      flex-direction: column-reverse;
-      align-items: center;
-      gap: 2rem;
+        flex-direction: column-reverse;
+        margin: 3rem auto; 
+        gap: 2rem;
+        text-align: center;
+        padding:2rem;
+    } 
+   .textContainer {
+        display: flex;
+        flex-direction: column;
+        
+        
+        padding-left: 2.5rem;  
+        padding-right: 1.5rem; 
+        
+        
+        text-align: left; 
     }
-    .textContainer {
-      align-items: center;
-      margin: 0rem 5rem;
-      gap: 1rem;
+    
+    .textTitle {
+        justify-content: center;
+        font-size: 1.5rem;
     }
-    .aboutName,
-    .aboutTitle {
-      font-size: 2rem;
+    
+    .aboutMeImg, .heroImg {
+        width: 80%; 
+        max-width: 300px;
     }
-    .light {
-      width: 60px;
-    }
-    .aboutMeImg {
-      width: 400px;
-    }
+
     .works {
-      padding: 0;
+        padding: 3rem 1rem;
+        margin: 2rem 0;
     }
-    .worksContainer {
-      padding: 5rem 0rem;
-      gap: 3rem;
-    }
+
     .projectTitle {
-      margin-left: 1rem;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
     }
+
     .works ul {
-      flex-direction: column;
-      gap: 1rem;
+        flex-direction: column;
+        gap: 1.5rem;
     }
+    
+    .works li {
+        width: 100%;
+        padding: 1.5rem; 
+    }
+
     .contactContainer {
-      margin: 10rem 5rem;
-      gap: 2rem;
+        margin: 3rem auto;
+        gap: 1.5rem;
     }
+    
+    .contactTitle {
+        font-size: 1.5rem;
+    }
+
     .contact {
-      flex-direction: column;
-      gap: 1rem;
-      margin-right: 0;
+        flex-direction: column;
+        gap: 1rem; 
     }
-  }
+    
+    .emailAndPhone h3 {
+        font-size: 0.9rem; 
+    }
+    
+    .socialMedia {
+        gap: 1.5rem;
+    }
+}
