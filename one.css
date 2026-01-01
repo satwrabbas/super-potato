@@ -1,4 +1,4 @@
-
+/* حافظ على هذا الكود كما هو */
 * {    
     font-family: "Poppins", sans-serif;
     font-weight: 700;
@@ -7,7 +7,6 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-      
 }
 
 body {
@@ -15,28 +14,57 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* لا نحتاج لـ Flexbox هنا لأن nav هو الطفل الوحيد المباشر */
     margin: 2rem auto;
     max-width: 1200px;
+    width: 100%; 
 }
 
-.navigation ul{
-    display: flex;
+/* هذا هو الكود الجديد/المعدل لتنسيق الـ navigation */
+.navigation {
+    display: flex; /* اجعل الـ nav هو Flex container */
+    justify-content: space-between; /* هذا يدفع اللوجو لليسار والقائمة لليمين */
+    align-items: center; /* لمحاذاة العناصر عمودياً في المنتصف */
+    padding: 0 2rem;     /* مسافة داخلية من اليمين واليسار */
+    max-width: 1200px;   /* يجب أن تكون نفس عرض الـ header ليتوسط */
+    margin: 0 auto;      /* لتوسيط الـ nav داخل الـ header */
+}
+
+/* ستايل اللوجو */
+.logo-link { /* إذا استخدمت logo-link class */
+    /* قد تحتاج لتحديد بعض الخصائص إذا كان هناك أي سلوك غير مرغوب فيه */
+    display: flex; /* لجعل img تتصرف بشكل جيد داخل الرابط */
+    align-items: center;
+}
+.logo {
+    height: 50px;       /* حجم اللوجو */
+    width: auto;
+    cursor: pointer;
+    /* margin-right: auto; <-- لم تعد بحاجة إليه هنا */
+    /* display: block; <-- لم تعد بحاجة إليه هنا */
+}
+
+/* ستايل الـ ul والروابط */
+.navigation ul {
+    display: flex; /* اجعل الـ ul أيضاً Flex container لروابطه */
     list-style-type: none;
     gap: 2rem;
+    align-items: center;
+    padding: 0; /* أزل الـ padding من هنا، أصبح على .navigation */
+    margin: 0;  /* أزل الـ margin الافتراضي للـ ul */
 }
 
-.navigation a{
+.navigation a {
     text-decoration: none;
     color: #eee;
+    transition: 0.3s;
 }
 
 .navigation a:hover {
     color: #00abd5;
 }
 
+/* باقي أكوادك كما هي */
 hr{
     opacity: 10%;
 }
@@ -145,6 +173,7 @@ hr{
     gap: 5px;
     font-size: 2rem;
 }
+/* هنا أيضا الـ ul يجب أن يكون flex لأجل الـ li */
 .works ul {
     display: flex;
     list-style-type: none;
